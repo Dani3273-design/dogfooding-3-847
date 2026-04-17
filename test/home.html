@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sample Page</title>
+
+    <!--TIPS::Just for using react in HTML5-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "react": "https://esm.sh/react?dev",
+            "react-dom/client": "https://esm.sh/react-dom/client?dev"
+          }
+        }
+    </script>
+
+    <!--TIPS::There are special instructions for style settings-->
+    <link href="/test/home.css" rel="stylesheet">
+
+    <script type="text/babel" data-type="module">
+        import React, { StrictMode } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+        //TIPS::Using 'ShellExcute>>Build#XXX-SPA' to compile will automatically convert the following requirements
+        //**ATTENTION::The 'trickAPP' variable is written by _BoxPage
+        //**ATTENTION::_BoxPage component hijacks the 'document', 'window', and 'root' variables through this function
+        (function(document, window, root, HTMLDocument, HTMLElement, HTMLCollection, Document, Node, Element, NodeList) {
+            !function() {
+                //**ATTENTION::The React root variable must be 'window.TrickAPPRoot'
+                //**ATTENTION::The _BoxPage component uses this variable to destroy this web page
+                window.TrickAPPRoot = createRoot(document.getElementById('id_body'));
+                window.TrickAPPRoot.render(
+                    <StrictMode>
+                        <h1>Hello, world</h1>
+                    </StrictMode>
+                );
+            }();
+        })(trickAPP.documentProxy, trickAPP.windowProxy, trickAPP.windowProxy, trickAPP.HTMLDocument, trickAPP.HTMLElement, trickAPP.HTMLCollection, trickAPP.Document, trickAPP.Node, trickAPP.Element, trickAPP.NodeList);
+    </script>
+</head>
+<body>
+<div id="id_body" class="Page-Body"></div>
+</body>
+</html>

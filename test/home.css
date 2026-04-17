@@ -1,0 +1,20 @@
+/**ATTENTION::By default, the _BoxPage component will remove the theme.css file, and the theme variable will automatically adopt the settings of the host web page.*/
+.Page-Body{
+    color:var(--Theme-Color-Active);
+}
+
+/*TIPS::Using 'ShellExcute>>Build#xxx-SPA' to compile will automatically convert 'html[trick-theme="xxx"]' to :host(div[trick-theme="xxx"])*/
+/**ATTENTION::Theme style adjustment needs to be filtered by ':host(div[trick-theme="xx"])'*/
+:host(div[trick-theme="dark"]){
+    .Page-Body {
+        color: red !important;
+    }
+}
+
+/*TIPS::Using 'ShellExcute>>Build#xxx-SPA' to compile will automatically convert 'html[dir="rtl"]' to ':host(div[dir="rtl"])'*/
+/**ATTENTION::Language(rtl) style adjustment needs to be filtered by ':host(div[dir="rtl"])'*/
+:host(div[dir="rtl"]){
+    .Page-Body {
+        color: yellow !important;
+    }
+}
